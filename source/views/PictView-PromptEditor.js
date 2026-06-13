@@ -83,13 +83,25 @@ const _DefaultConfiguration =
 	CSS: /*css*/`
 		.pspe { font-size: 14px; color: var(--theme-color-text-primary, #1f2430); }
 		.pspe-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; flex-wrap: wrap; }
-		.pspe-title { font-size: 16px; font-weight: 650; margin-right: auto; }
+		/* Structural titles take the theme's optional display face + treatment.
+		   The fallbacks (inherit / none / normal / 650) keep the look unchanged
+		   for hosts whose theme does not define a display family. A host whose
+		   brand carries one (e.g. a drafting/engraving face) gets it here with
+		   no app-side override. */
+		.pspe-title { font-size: 16px; margin-right: auto;
+			font-family: var(--theme-typography-family-display, inherit);
+			text-transform: var(--theme-typography-display-transform, none);
+			letter-spacing: var(--theme-typography-display-tracking, normal);
+			font-weight: var(--theme-typography-display-weight, 650); }
 		.pspe-tabs { display: flex; gap: 4px; }
 		.pspe-tab {
 			font: inherit; font-size: 13px; padding: 6px 12px; cursor: pointer;
 			border: 1px solid var(--theme-color-border-default, #d6dde3);
 			background: var(--theme-color-background-panel, #fff);
 			color: var(--theme-color-text-secondary, #5b6470); border-radius: 8px;
+			font-family: var(--theme-typography-family-display, inherit);
+			text-transform: var(--theme-typography-display-transform, none);
+			letter-spacing: var(--theme-typography-display-tracking, normal);
 		}
 		.pspe-tab-on { background: var(--theme-color-brand-primary, #2880a6); border-color: var(--theme-color-brand-primary, #2880a6); color: var(--theme-color-text-on-brand, #fff); }
 		.pspe-tab-count { opacity: 0.75; font-size: 11px; margin-left: 4px; }
@@ -144,7 +156,11 @@ const _DefaultConfiguration =
 			background: var(--theme-color-background-panel, #fff); padding: 12px 14px; margin-bottom: 10px;
 		}
 		.pspe-segment-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
-		.pspe-segment-name { font-weight: 650; font-size: 13.5px; }
+		.pspe-segment-name { font-size: 13.5px;
+			font-family: var(--theme-typography-family-display, inherit);
+			text-transform: var(--theme-typography-display-transform, none);
+			letter-spacing: var(--theme-typography-display-tracking, normal);
+			font-weight: var(--theme-typography-display-weight, 650); }
 		.pspe-segment-guidance { font-size: 12px; color: var(--theme-color-text-muted, #97a1ab); margin-right: auto; }
 		.pspe-pill {
 			font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; padding: 1px 8px; border-radius: 999px;
@@ -172,7 +188,11 @@ const _DefaultConfiguration =
 		.pspe-generate-note { font-size: 12px; color: var(--theme-color-text-muted, #97a1ab); margin-left: auto; }
 		.pspe-preview-panel { margin-top: 12px; }
 		.pspe-preview-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
-		.pspe-preview-title { font-weight: 650; font-size: 13.5px; }
+		.pspe-preview-title { font-size: 13.5px;
+			font-family: var(--theme-typography-family-display, inherit);
+			text-transform: var(--theme-typography-display-transform, none);
+			letter-spacing: var(--theme-typography-display-tracking, normal);
+			font-weight: var(--theme-typography-display-weight, 650); }
 		.pspe-preview-note { font-size: 12px; color: var(--theme-color-text-muted, #97a1ab); margin-right: auto; }
 		.pspe-btn-on, .pspe-btn-on:hover { background: var(--theme-color-brand-primary, #2880a6); border-color: var(--theme-color-brand-primary, #2880a6); color: var(--theme-color-text-on-brand, #fff); }
 		.pspe-preview-raw {
